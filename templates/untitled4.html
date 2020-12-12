@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>ML API</title>
+<style>
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+body { 
+	width: 80%;
+	height:100%;
+	max-width: 500px;
+    margin: auto;
+	font-family: 'Open Sans', sans-serif;
+	background: #092756;
+	color: #fff;
+	font-size: 18px;
+	text-align:left;
+	letter-spacing:1.2px;
+	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+}
+
+body  
+{  
+background-image:url("https://wipo.shorthandstories.com/wtt_ai/assets/7vZkMz0GAh/video_poster_1920-1080-1920x1080.jpeg");  
+background-size:cover;
+background-position:center;
+}    
+
+
+input[type=text], input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text],input[type=text] {
+    width: 100%; 
+	margin-bottom: 10px; 
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 15px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+
+}
+
+
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: centre;
+  margin: 24px 0 12px 0;
+}
+
+img.IMPACT {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body >
+<h2>IMPACT PREDICTION ANALYSIS</h2>
+
+<form action="{{ url_for('predict')}}"method="post">
+  <div class="imgcontainer">
+  </div>
+  
+  
+  <div class="container">
+    <label for="ID"><b>ID</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="ID" required>
+
+    <label for="ID_status"><b>ID STATUS</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="ID_status" required>
+    
+    <label for="count_reassign"><b>COUNT REASSIGN</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="count_reassign" required>
+    
+    <label for="count_updated"><b>COUNT UPDATED</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="count_updated" required>
+    
+    <label for="ID_caller"><b>ID CALLER</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="ID_caller" required>
+    
+    <label for="opened_by"><b>OPENED BY</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="opened_by" required>
+    
+    <label for="Created_by"><b>CREATED BY</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="Created_by" required>
+    
+    <label for="updated_by"><b>UPDATED BY</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="updated_by" required>
+    
+    <label for="location"><b>LOCATION</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="location" required>
+    
+    <label for="Category_ID"><b>CATEGORY ID</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="Category_ID" required>
+    
+    <label for="user_symptom"><b>USER SYMPTOM</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="user_symptom" required>
+    
+    <label for="Support_group"><b>SUPPORT GROUP</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="Support_group" required>
+    
+    <label for="support_incharge"><b>SUPPORT INCHARGE</b></label>
+    <input type="text" placeholder="Range 0 TO 999999" name="support_incharge" required>
+    
+    
+    
+        
+   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+   </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+    
+    
+  </div>
+  
+  <form class=""action="data"method="post">
+  <input type="file"name="csvfile"value="">
+  <input type="submit"name=""value="Submit">
+  </form>
+
+  
+</body>
+</html>
+
+
